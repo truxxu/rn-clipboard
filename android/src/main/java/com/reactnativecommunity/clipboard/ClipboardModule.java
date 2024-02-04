@@ -252,7 +252,7 @@ public class ClipboardModule extends NativeClipboardModuleSpec {
     try {
       ClipboardManager clipboard = getClipboardService();
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-        clipboard.clearPrimaryClipboard();
+        clipboard.clearPrimaryClip();
         promise.resolve(true);
       }
       promise.resolve(false);
