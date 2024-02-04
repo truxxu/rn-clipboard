@@ -246,4 +246,19 @@ public class ClipboardModule extends NativeClipboardModuleSpec {
   public void removeListeners(Integer count) {
     // Keep: Required for RN built in Event Emitter Calls.
   }
+
+    @ReactMethod
+    public void clearClipboard(Promise promise) {
+    try {
+      ClipboardManager clipboard = getClipboardService();
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+        clipboard.clearPrimaryClipboard();
+        promise.resolve(true);
+      }
+      promise.resolve(false);
+    } catch (Exception e) {
+      promise.reject(e);
+      e.printStackTrace();
+    }
+  }
 }

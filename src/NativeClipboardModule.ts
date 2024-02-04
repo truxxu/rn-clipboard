@@ -144,6 +144,7 @@ export interface Spec extends TurboModule {
    * ```
    */
   hasWebURL(): Promise<boolean>;
+  clearClipboard: () => Promise<boolean>;
   setListener(): void;
   removeListener(): void;
   addListener(eventName: string): void;

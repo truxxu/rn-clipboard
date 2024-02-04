@@ -182,6 +182,20 @@ export const Clipboard = {
     return NativeClipboard.hasWebURL();
   },
   /**
+   * (Android Only)
+   * Clear clipboard returns a promise with a boolean if the clipboard is cleared.
+   * This was added in Android API level 28
+   * ```javascript
+   * await Clipboard.clearClip();
+   * ```
+   */
+  clearClipboard() {
+    if (Platform.OS === 'ios') {
+      return;
+    }
+    return NativeClipboard.clearClipboard();
+  },
+  /**
    * (iOS and Android Only)
    * Adds a listener to get notifications when the clipboard has changed.
    * If this is the first listener, turns on clipboard notifications on the native side.
